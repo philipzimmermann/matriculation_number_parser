@@ -1,5 +1,4 @@
 import csv
-
 from termcolor import colored
 import pandas as pd
 
