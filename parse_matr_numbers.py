@@ -1,7 +1,7 @@
 import csv
 from termcolor import colored
 import pandas as pd
-
+import sys
 
 def find_student_and_give_point(evaluation_df, matricle_number, name):
     # Iterate over evaluation file and look for matriculation number
@@ -17,7 +17,7 @@ def find_student_and_give_point(evaluation_df, matricle_number, name):
             else:
                 print(colored(f"Points already set to: {row[5]}", 'yellow'))
             return
-    print(colored(f"No match for: {name} matr number: {matricle_number}"), 'red')
+    print(colored(f"No match for: {name} matr number: {matricle_number}", 'red'))
 
 
 def main():
@@ -46,7 +46,10 @@ def main():
 
 
 if __name__ == '__main__':
-    ATTENDANCE_PATH = "04_Lecture/Lecture 04 Attendance.csv"
-    EVALUATION_PATH = "04_Lecture/Overcoming Obst 950636118 (W2223) Bewertungen-20221123_2126-comma_separated.csv"
+    print(f"Arguments count: {len(sys.argv)}")
+    assert len(sys.argv)==3
+    
+    ATTENDANCE_PATH = sys.argv[1]
+    EVALUATION_PATH = sys.argv[2]
 
     main()
