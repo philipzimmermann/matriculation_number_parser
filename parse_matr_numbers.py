@@ -1,5 +1,4 @@
 import csv
-from termcolor import colored
 import pandas as pd
 import sys
 import os.path
@@ -11,14 +10,14 @@ def find_student_and_give_point(evaluation_df, matricle_number, name):
         if len(matricle_number_to_compare) != 8 or not matricle_number_to_compare.isdigit():
             continue
         if matricle_number_to_compare == matricle_number:
-            text_1 = f"{colored('Match:', 'green')} \t{row[0]} {row[1]}"
+            text_1 = f"Match: \t{row[0]} {row[1]}"
             print(text_1, " " * max(55 - len(text_1), 0), f" == {name}")
             if row[5] == '-':
                 row[5] = 1
             else:
-                print(colored(f"Points already set to: {row[5]}", 'yellow'))
+                print(f"Points already set to: {row[5]}")
             return
-    print(colored(f"No match for: {name} matr number: {matricle_number}", 'red'))
+    print(f"No match for: {name} matr number: {matricle_number}")
 
 
 if __name__ == '__main__':
@@ -52,7 +51,7 @@ if __name__ == '__main__':
         if len(matricle_number) == 7:
             matricle_number = '0' + matricle_number # Try to fix with initial zero
         if len(matricle_number) != 8 or not matricle_number.isdigit():
-            print(colored('Wrong matr number in attendance file please check:', 'red'),
+            print('Wrong matr number in attendance file please check:',
                   f"Name: {name} \tMatriculation Number: {matricle_number}")
             continue
 
